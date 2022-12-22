@@ -1,4 +1,5 @@
 // import { Formik, Form, Field } from 'formik';
+import PropTypes from 'prop-types';
 import { ReactComponent as SearchIcon } from 'components/bx_search.svg';
 import { Component } from 'react';
 
@@ -13,6 +14,7 @@ import {
 export class Searchbar extends Component {
   state = {
     imgSense: '',
+    page: 1,
   };
 
   handleSearchImg = e => {
@@ -27,7 +29,7 @@ export class Searchbar extends Component {
     }
     this.props.onSubmit(this.state.imgSense);
 
-    this.setState({ imgSense: '' });
+    this.setState({ imgSense: '', page: 1 });
   };
 
   render() {
@@ -54,3 +56,7 @@ export class Searchbar extends Component {
     );
   }
 }
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
