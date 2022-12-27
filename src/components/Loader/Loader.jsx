@@ -8,7 +8,10 @@ export function Loader() {
       radius="9"
       color="#fb89ff"
       ariaLabel="three-dots-loading"
-      wrapperStyle={{}}
+      wrapperStyle={{
+        display: 'flex',
+        justifyContent: 'center',
+      }}
       wrapperClassName=""
       visible={true}
     />

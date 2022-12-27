@@ -14,7 +14,7 @@ import {
 export class Searchbar extends Component {
   state = {
     imgSense: '',
-    page: 1,
+    // page: 1,
   };
 
   handleSearchImg = e => {
@@ -29,7 +29,7 @@ export class Searchbar extends Component {
     }
     this.props.onSubmit(this.state.imgSense);
 
-    this.setState({ imgSense: '', page: 1 });
+    this.setState({ imgSense: '' });
   };
 
   render() {

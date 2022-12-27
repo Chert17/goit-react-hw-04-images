@@ -10,7 +10,7 @@ export function ImageGalleryItem({ img, onClick }) {
   return (
     <>
       <Gallery>
-        {img.hits.map(({ id, webformatURL, largeImageURL, tags }) => {
+        {img.map(({ id, webformatURL, largeImageURL, tags }) => {
           return (
             <GalleryItemStyle key={id} onClick={onClick}>
               <GalleryImg
@@ -29,6 +29,6 @@ export function ImageGalleryItem({ img, onClick }) {
 }
 
 ImageGalleryItem.propTypes = {
-  img: PropTypes.shape({}).isRequired,
+  img: PropTypes.array.isRequired,
   onClick: PropTypes.func.isRequired,
 };
