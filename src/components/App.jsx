@@ -14,7 +14,7 @@ export class App extends Component {
   render() {
     return (
       <>
-        <Searchbar onSubmit={this.handleFormSubmit}></Searchbar>
+        <Searchbar onSubmit={this.handleFormSubmit} />
         <ImageGallery imgSense={this.state.imgSense} />
       </>
     );

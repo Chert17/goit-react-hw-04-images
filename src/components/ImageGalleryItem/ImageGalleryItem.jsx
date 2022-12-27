@@ -19,7 +19,7 @@ export function ImageGalleryItem({ img, onClick }) {
                 data-bigimg={largeImageURL}
                 width="300"
                 height="200"
-              ></GalleryImg>
+              />
             </GalleryItemStyle>
           );
         })}

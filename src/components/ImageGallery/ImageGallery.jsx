@@ -86,7 +86,7 @@ export class ImageGallery extends Component {
       <>
         <ImageGalleryItem img={img} onClick={this.onModal} />
         {status === Status.PENDING && <Loader />}
-        {img.length >= 4 && <Button onClick={this.loadMore} />}
+        {img.length >= 12 && <Button onClick={this.loadMore} />}
         {showModal && <Modal onClose={this.onModal} bigImg={bigImg} />}
       </>
     );
