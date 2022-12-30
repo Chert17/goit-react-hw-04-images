@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
@@ -11,9 +12,10 @@ export function Modal({ bigImg, onClose }) {
     window.addEventListener('keydown', handleKeyDown);
 
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  }, [handleKeyDown]);
 
   function handleKeyDown(event) {
+    console.log('object');
     if (event.code === 'Escape') {
       onClose();
     }
