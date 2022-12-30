@@ -10,7 +10,7 @@ import {
   SearchFormInput,
 } from './Searchbar.styled';
 
-export function Searchbar({ onSubmit }) {
+export function Searchbar({ onSubmit, setPage, setImg }) {
   const [query, setQuery] = useState('');
 
   function handleSearchImg(e) {
@@ -23,7 +23,10 @@ export function Searchbar({ onSubmit }) {
     if (!query) return;
 
     onSubmit(query);
+
     setQuery('');
+    setPage(1);
+    setImg([]);
   }
 
   return (
@@ -51,4 +54,6 @@ export function Searchbar({ onSubmit }) {
 
 Searchbar.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  setPage: PropTypes.func.isRequired,
+  setImg: PropTypes.func.isRequired,
 };
