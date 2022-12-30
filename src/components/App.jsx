@@ -1,22 +1,19 @@
-import { Component } from 'react';
+// import { Component } from 'react';
 import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
+import { useState } from 'react';
 
-export class App extends Component {
-  state = {
-    imgSense: '',
-  };
+export function App() {
+  const [imgQuery, setImgQuery] = useState('');
 
-  handleFormSubmit = imgSense => {
-    this.setState({ imgSense });
-  };
-
-  render() {
-    return (
-      <>
-        <Searchbar onSubmit={this.handleFormSubmit} />
-        <ImageGallery imgSense={this.state.imgSense} />
-      </>
-    );
+  function handleFormSubmit(query) {
+    setImgQuery(query);
   }
+
+  return (
+    <>
+      <Searchbar onSubmit={handleFormSubmit} />
+      <ImageGallery imgQuery={imgQuery} />
+    </>
+  );
 }

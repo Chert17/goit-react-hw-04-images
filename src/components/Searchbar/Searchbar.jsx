@@ -1,7 +1,6 @@
-// import { Formik, Form, Field } from 'formik';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { ReactComponent as SearchIcon } from 'components/bx_search.svg';
-import { Component } from 'react';
 
 import {
   SearchbarStyle,
@@ -11,50 +10,43 @@ import {
   SearchFormInput,
 } from './Searchbar.styled';
 
-export class Searchbar extends Component {
-  state = {
-    imgSense: '',
-    // page: 1,
-  };
+export function Searchbar({ onSubmit }) {
+  const [query, setQuery] = useState('');
 
-  handleSearchImg = e => {
-    this.setState({ imgSense: e.currentTarget.value.toLowerCase() });
-  };
+  function handleSearchImg(e) {
+    setQuery(e.currentTarget.value.toLowerCase());
+  }
 
-  handleSubmit = e => {
+  function handleSubmit(e) {
     e.preventDefault();
 
-    if (this.state.imgSense.trim() === '') {
-      return;
-    }
-    this.props.onSubmit(this.state.imgSense);
+    if (!query) return;
 
-    this.setState({ imgSense: '' });
-  };
-
-  render() {
-    return (
-      <>
-        <SearchbarStyle>
-          <SearchForm onSubmit={this.handleSubmit}>
-            <SearchFormBtn type="submit">
-              <SearchIcon />
-            </SearchFormBtn>
-            <SearchFormLabel>
-              <SearchFormInput
-                type="text"
-                value={this.state.imgSense}
-                autoComplete="off"
-                autoFocus
-                placeholder="Search images and photos"
-                onChange={this.handleSearchImg}
-              />
-            </SearchFormLabel>
-          </SearchForm>
-        </SearchbarStyle>
-      </>
-    );
+    onSubmit(query);
+    setQuery('');
   }
+
+  return (
+    <>
+      <SearchbarStyle>
+        <SearchForm onSubmit={handleSubmit}>
+          <SearchFormBtn type="submit">
+            <SearchIcon />
+          </SearchFormBtn>
+          <SearchFormLabel>
+            <SearchFormInput
+              type="text"
+              value={query}
+              autoComplete="off"
+              autoFocus
+              placeholder="Search images and photos"
+              onChange={handleSearchImg}
+            />
+          </SearchFormLabel>
+        </SearchForm>
+      </SearchbarStyle>
+    </>
+  );
 }
 
 Searchbar.propTypes = {
